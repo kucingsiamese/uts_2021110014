@@ -3,6 +3,7 @@ import 'package:uts_2021110014/screens/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
@@ -17,11 +18,20 @@ class LoginScreen extends StatelessWidget {
             Text('Welcome to Nekoshop',
                 style: Theme.of(context).textTheme.headlineMedium),
             TextField(
-                controller: emailController,
-                decoration: const InputDecoration(labelText: 'Email')),
+              controller: emailController,
+              decoration: const InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 20),
             TextField(
-                controller: passwordController,
-                decoration: const InputDecoration(labelText: 'Password')),
+              controller: passwordController,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+              ),
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
