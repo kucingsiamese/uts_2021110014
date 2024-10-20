@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         id: 'p2',
         title: 'Product B',
         description: 'Description B',
-        price: 1999999,
+        price: 9999999,
         imageUrl: 'https://via.placeholder.com/150'),
   ];
 
