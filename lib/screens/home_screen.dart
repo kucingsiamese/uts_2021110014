@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';
+import 'package:uts_2021110014/models/product.dart';
+import 'package:uts_2021110014/screens/cart_screen.dart';
+import 'package:uts_2021110014/screens/product_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -38,9 +40,10 @@ class HomeScreen extends StatelessWidget {
         itemCount: products.length,
         itemBuilder: (ctx, i) => GestureDetector(
           onTap: () {
+            final selectedProduct = products[i];
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) => const ProductScreen(product: products[i]),
+                builder: (_) => ProductScreen(product: selectedProduct),
               ),
             );
           },
