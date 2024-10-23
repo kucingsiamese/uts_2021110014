@@ -17,6 +17,7 @@ class NekoShopApp extends StatelessWidget {
       create: (_) => CartProvider(),
       child: MaterialApp(
         theme: ThemeData(
+          primaryColor: Colors.purple[300],
           primarySwatch: Colors.blue,
           fontFamily: 'Roboto',
           textTheme: const TextTheme(

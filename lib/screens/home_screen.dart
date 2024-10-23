@@ -3,8 +3,13 @@ import 'package:uts_2021110014/models/product.dart';
 import 'package:uts_2021110014/screens/cart_screen.dart';
 import 'package:uts_2021110014/screens/product_screen.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final List<Product> products = [
     Product(
         id: 'p1',
@@ -55,9 +60,15 @@ class HomeScreen extends StatelessWidget {
         price: 9999999,
         imageUrl: 'https://via.placeholder.com/150'),
   ];
+  String searchQuery = '';
 
   @override
   Widget build(BuildContext context) {
+    //Filter produk berdasarkan menu search
+    final filteredProducts = products.where((product) {
+      return product.title.toLowerCase().contains(searchQuery.toLowerCase());
+    }).toList();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Our Products'),
@@ -71,32 +82,55 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(10.0),
-        itemCount: products.length,
-        itemBuilder: (ctx, i) => GestureDetector(
-          onTap: () {
-            final selectedProduct = products[i];
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => ProductScreen(product: selectedProduct),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onChanged: (value) {
+                setState(() {
+                  searchQuery = value;
+                });
+              },
+              decoration: InputDecoration(
+                labelText: 'Search products',
+                prefixIcon: const Icon(Icons.search),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
-            );
-          },
-          child: GridTile(
-            footer: GridTileBar(
-              backgroundColor: Colors.black87,
-              title: Text(products[i].title),
             ),
-            child: Image.network(products[i].imageUrl),
           ),
-        ),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-        ),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.all(10.0),
+              itemCount: filteredProducts.length,
+              itemBuilder: (ctx, i) => GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          ProductScreen(product: filteredProducts[i]),
+                    ),
+                  );
+                },
+                child: GridTile(
+                  footer: GridTileBar(
+                    backgroundColor: Colors.black87,
+                    title: Text(filteredProducts[i].title),
+                  ),
+                  child: Image.network(filteredProducts[i].imageUrl),
+                ),
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
