@@ -9,13 +9,49 @@ class HomeScreen extends StatelessWidget {
     Product(
         id: 'p1',
         title: 'Product A',
-        description: 'Description A',
+        description: 'This is product A',
         price: 9999999,
         imageUrl: 'https://via.placeholder.com/150'),
     Product(
         id: 'p2',
         title: 'Product B',
-        description: 'Description B',
+        description: 'This is product B',
+        price: 9999999,
+        imageUrl: 'https://via.placeholder.com/150'),
+    Product(
+        id: 'p3',
+        title: 'Product C',
+        description: 'This is product C',
+        price: 9999999,
+        imageUrl: 'https://via.placeholder.com/150'),
+    Product(
+        id: 'p4',
+        title: 'Product D',
+        description: 'This is product D',
+        price: 9999999,
+        imageUrl: 'https://via.placeholder.com/150'),
+    Product(
+        id: 'p5',
+        title: 'Product E',
+        description: 'This is product E',
+        price: 9999999,
+        imageUrl: 'https://via.placeholder.com/150'),
+    Product(
+        id: 'p6',
+        title: 'Product F',
+        description: 'This is product F',
+        price: 9999999,
+        imageUrl: 'https://via.placeholder.com/150'),
+    Product(
+        id: 'p7',
+        title: 'Product G',
+        description: 'This is product G',
+        price: 9999999,
+        imageUrl: 'https://via.placeholder.com/150'),
+    Product(
+        id: 'p8',
+        title: 'Product H',
+        description: 'This is product H',
         price: 9999999,
         imageUrl: 'https://via.placeholder.com/150'),
   ];
